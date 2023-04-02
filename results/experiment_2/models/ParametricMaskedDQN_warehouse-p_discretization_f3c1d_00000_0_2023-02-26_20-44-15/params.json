@@ -1,0 +1,91 @@
+{
+  "callbacks": "<class 'src.envs.custom_metrics_callback.CustomMetricsCallback'>",
+  "categorical_distribution_temperature": 0.5721090461439949,
+  "double_q": true,
+  "dueling": true,
+  "env": "warehouse-p_discretization",
+  "env_config": {
+    "ACTION_RANGE": 220,
+    "DT": 1.0,
+    "LEVELS": {
+      "1": {
+        "AGENT": {
+          "angle": 90.0,
+          "radius": 0.4,
+          "step_size": 1.0,
+          "x": 1.0,
+          "y": 1.0
+        },
+        "GENERATE_OBSTACLES": {
+          "COUNT": 4,
+          "DISTANCE_WAYPOINTS": 4.0,
+          "MEAN_SIZE": 1.0,
+          "POSITION_COVARIANCE": [
+            [
+              7.5,
+              0
+            ],
+            [
+              0,
+              7.5
+            ]
+          ],
+          "RANGE_SIZE": 0.75,
+          "START_SEED": 50,
+          "STEP_SIZE": 0.3,
+          "VARIANCE_DISTANCE": 0.25,
+          "VARIANCE_SIZE": 0.25,
+          "WAYPOINTS": 2
+        },
+        "GOAL": {
+          "radius": 0.5,
+          "x": 12.0,
+          "y": 12.0
+        },
+        "HEIGHT": 15.0,
+        "OBSTACLES": {},
+        "WIDTH": 15.0
+      }
+    },
+    "RANDOM_SEED": 42,
+    "REWARD": {
+      "COLLISION": -20.0,
+      "GOAL": 50.0,
+      "REWARD_COEFFICIENT": 5.0,
+      "TIMESTEP_PENALTY_COEFFICIENT": 0.05
+    },
+    "SAFETY_DISTANCE": 0.05,
+    "STEPS_PER_EPISODE": 40
+  },
+  "env_task_fn": "<function curriculum_fn at 0x7fa64fa4b5e0>",
+  "exploration_config": {
+    "epsilon_timesteps": 7157,
+    "final_epsilon": 0.013985350229506357,
+    "initial_epsilon": 0.6542201567070297,
+    "type": "<class 'src.algorithms.exploration.exploration.DynamicIntervalEpsilonGreedy'>"
+  },
+  "framework": "torch",
+  "lr": 0.011,
+  "n_step": 1,
+  "noisy": false,
+  "normalize_actions": false,
+  "num_gpus": 0,
+  "num_workers": 2,
+  "p_hiddens": [
+    512,
+    56
+  ],
+  "p_lr": 0.00013595132183729435,
+  "q_hiddens": [
+    64
+  ],
+  "q_lr": 3.453960761764736e-05,
+  "replay_buffer_config": {
+    "capacity": 19299,
+    "prioritized_replay_alpha": 0.5509030368975296,
+    "prioritized_replay_beta": 0.2969250149040724
+  },
+  "seed": 42,
+  "sigma0": 0.9063566517922343,
+  "train_batch_size": 148
+}

@@ -1,0 +1,96 @@
+{
+  "actor_hidden_activation": "relu",
+  "actor_hiddens": [
+    512,
+    256
+  ],
+  "actor_lr": 2.5875004729359725e-06,
+  "callbacks": "<class 'src.envs.custom_metrics_callback.CustomMetricsCallback'>",
+  "critic_hidden_activation": "relu",
+  "critic_hiddens": [
+    512
+  ],
+  "critic_lr": 9.854074806889184e-05,
+  "env": "warehouse-euclidean",
+  "env_config": {
+    "ACTION_RANGE": 220,
+    "DT": 1.0,
+    "LEVELS": {
+      "1": {
+        "AGENT": {
+          "angle": 90.0,
+          "radius": 0.4,
+          "step_size": 1.0,
+          "x": 1.0,
+          "y": 1.0
+        },
+        "GENERATE_OBSTACLES": {
+          "COUNT": 4,
+          "DISTANCE_WAYPOINTS": 4.0,
+          "MEAN_SIZE": 1.0,
+          "POSITION_COVARIANCE": [
+            [
+              7.5,
+              0
+            ],
+            [
+              0,
+              7.5
+            ]
+          ],
+          "RANGE_SIZE": 0.75,
+          "START_SEED": 50,
+          "STEP_SIZE": 0.3,
+          "VARIANCE_DISTANCE": 0.25,
+          "VARIANCE_SIZE": 0.25,
+          "WAYPOINTS": 2
+        },
+        "GOAL": {
+          "radius": 0.5,
+          "x": 12.0,
+          "y": 12.0
+        },
+        "HEIGHT": 15.0,
+        "OBSTACLES": {},
+        "WIDTH": 15.0
+      }
+    },
+    "RANDOM_SEED": 40,
+    "REWARD": {
+      "COLLISION": -20.0,
+      "GOAL": 50.0,
+      "REWARD_COEFFICIENT": 5.0,
+      "TIMESTEP_PENALTY_COEFFICIENT": 0.05
+    },
+    "SAFETY_DISTANCE": 0.05,
+    "STEPS_PER_EPISODE": 40
+  },
+  "env_task_fn": "<function curriculum_fn at 0x7f9c7ca8c5e0>",
+  "exploration_config": {
+    "final_scale": 1.6676665068577785,
+    "initial_scale": 15.89006189835185,
+    "random_timesteps": 385,
+    "scale_timesteps": 7248,
+    "stddev": 1.0,
+    "type": "<class 'ray.rllib.utils.exploration.gaussian_noise.GaussianNoise'>"
+  },
+  "framework": "torch",
+  "l2_reg": 0.0008312172611146694,
+  "normalize_actions": false,
+  "num_gpus": 0,
+  "num_workers": 2,
+  "policy_delay": 1,
+  "replay_buffer_config": {
+    "capacity": 29410,
+    "prioritized_replay_alpha": 0.6047139966691818,
+    "prioritized_replay_beta": 0.24715294621291123
+  },
+  "seed": 40,
+  "smooth_target_policy": true,
+  "target_network_update_freq": 1,
+  "target_noise": 0.3991591439908108,
+  "target_noise_clip": 0.2530340633923967,
+  "tau": 0.0015242731596507842,
+  "train_batch_size": 318,
+  "twin_q": true
+}

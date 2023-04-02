@@ -1,0 +1,77 @@
+{
+  "callbacks": "<class 'src.envs.custom_metrics_callback.CustomMetricsCallback'>",
+  "double_q": true,
+  "dueling": true,
+  "env": "warehouse-discretization",
+  "env_config": {
+    "ACTION_RANGE": 220,
+    "DT": 1.0,
+    "LEVELS": {
+      "1": {
+        "AGENT": {
+          "angle": 90.0,
+          "radius": 0.4,
+          "step_size": 1.0,
+          "x": 1.0,
+          "y": 1.0
+        },
+        "GENERATE_OBSTACLES": {
+          "COUNT": 4,
+          "DISTANCE_WAYPOINTS": 4.0,
+          "MEAN_SIZE": 1.0,
+          "POSITION_COVARIANCE": [
+            [
+              7.5,
+              0
+            ],
+            [
+              0,
+              7.5
+            ]
+          ],
+          "RANGE_SIZE": 0.75,
+          "START_SEED": 50,
+          "STEP_SIZE": 0.3,
+          "VARIANCE_DISTANCE": 0.25,
+          "VARIANCE_SIZE": 0.25,
+          "WAYPOINTS": 2
+        },
+        "GOAL": {
+          "radius": 0.5,
+          "x": 12.0,
+          "y": 12.0
+        },
+        "HEIGHT": 15.0,
+        "OBSTACLES": {},
+        "WIDTH": 15.0
+      }
+    },
+    "RANDOM_SEED": 44,
+    "REWARD": {
+      "COLLISION": -20.0,
+      "GOAL": 50.0,
+      "REWARD_COEFFICIENT": 5.0,
+      "TIMESTEP_PENALTY_COEFFICIENT": 0.05
+    },
+    "SAFETY_DISTANCE": 0.05,
+    "STEPS_PER_EPISODE": 40
+  },
+  "env_task_fn": "<function curriculum_fn at 0x7fd4dcaf58b0>",
+  "exploration_config": {
+    "epsilon_timesteps": 15000,
+    "final_epsilon": 0.05,
+    "initial_epsilon": 1.0
+  },
+  "framework": "torch",
+  "hiddens": [
+    256,
+    256
+  ],
+  "lr": 0.00023905045501405943,
+  "noisy": false,
+  "num_gpus": 1,
+  "num_workers": 2,
+  "seed": 44,
+  "sigma0": 1.764313877579869,
+  "train_batch_size": 211
+}

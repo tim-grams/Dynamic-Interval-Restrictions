@@ -1,0 +1,76 @@
+{
+  "callbacks": "<class 'src.envs.custom_metrics_callback.CustomMetricsCallback'>",
+  "clip_param": 0.28899889104300547,
+  "entropy_coeff": 0.003053152288187382,
+  "env": "warehouse-masking",
+  "env_config": {
+    "ACTION_RANGE": 220,
+    "DT": 1.0,
+    "LEVELS": {
+      "1": {
+        "AGENT": {
+          "angle": 90.0,
+          "radius": 0.4,
+          "step_size": 1.0,
+          "x": 1.0,
+          "y": 1.0
+        },
+        "GENERATE_OBSTACLES": {
+          "COUNT": 4,
+          "DISTANCE_WAYPOINTS": 4.0,
+          "MEAN_SIZE": 1.0,
+          "POSITION_COVARIANCE": [
+            [
+              7.5,
+              0
+            ],
+            [
+              0,
+              7.5
+            ]
+          ],
+          "RANGE_SIZE": 0.75,
+          "START_SEED": 50,
+          "STEP_SIZE": 0.3,
+          "VARIANCE_DISTANCE": 0.25,
+          "VARIANCE_SIZE": 0.25,
+          "WAYPOINTS": 2
+        },
+        "GOAL": {
+          "radius": 0.5,
+          "x": 12.0,
+          "y": 12.0
+        },
+        "HEIGHT": 15.0,
+        "OBSTACLES": {},
+        "WIDTH": 15.0
+      }
+    },
+    "RANDOM_SEED": 40,
+    "REWARD": {
+      "COLLISION": -20.0,
+      "GOAL": 50.0,
+      "REWARD_COEFFICIENT": 5.0,
+      "TIMESTEP_PENALTY_COEFFICIENT": 0.05
+    },
+    "SAFETY_DISTANCE": 0.05,
+    "STEPS_PER_EPISODE": 40
+  },
+  "env_task_fn": "<function curriculum_fn at 0x7ff3868189d0>",
+  "framework": "torch",
+  "lambda": 0.881314078552198,
+  "lr": 0.00015254261567176742,
+  "model": {
+    "fcnet_hiddens": [
+      128
+    ]
+  },
+  "num_gpus": 0,
+  "num_sgd_iter": 18,
+  "num_workers": 2,
+  "seed": 40,
+  "sgd_minibatch_size": 83,
+  "train_batch_size": 3771,
+  "vf_clip_param": 9.231718345967364,
+  "vf_loss_coeff": 1.3326120093126859
+}
