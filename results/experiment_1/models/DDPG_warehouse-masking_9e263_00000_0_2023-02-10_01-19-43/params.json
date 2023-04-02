@@ -1,0 +1,75 @@
+{
+  "actor_hidden_activation": "relu",
+  "actor_hiddens": [
+    256
+  ],
+  "actor_lr": 3.310914836311123e-05,
+  "callbacks": "<class 'src.envs.custom_metrics_callback.CustomMetricsCallback'>",
+  "critic_hidden_activation": "relu",
+  "critic_hiddens": [
+    256,
+    512
+  ],
+  "critic_lr": 0.0002153316529926007,
+  "env": "warehouse-masking",
+  "env_config": {
+    "ACTION_RANGE": 220,
+    "DT": 1.0,
+    "LEVELS": {
+      "1": {
+        "AGENT": {
+          "angle": 90.0,
+          "radius": 0.4,
+          "step_size": 1.0,
+          "x": 1.0,
+          "y": 1.0
+        },
+        "GOAL": {
+          "radius": 0.5,
+          "x": 12.0,
+          "y": 12.0
+        },
+        "HEIGHT": 15.0,
+        "OBSTACLES": {},
+        "WIDTH": 15.0
+      }
+    },
+    "RANDOM_SEED": 43,
+    "REWARD": {
+      "COLLISION": -20.0,
+      "GOAL": 50.0,
+      "REWARD_COEFFICIENT": 5.0,
+      "TIMESTEP_PENALTY_COEFFICIENT": 0.05
+    },
+    "SAFETY_DISTANCE": 0.05,
+    "STEPS_PER_EPISODE": 40
+  },
+  "env_task_fn": "<function curriculum_fn at 0x7fe1a8ba8670>",
+  "exploration_config": {
+    "final_scale": 2.397651870154254,
+    "initial_scale": 5.467054285597614,
+    "random_timesteps": 293,
+    "scale_timesteps": 17759,
+    "stddev": 1.0,
+    "type": "<class 'ray.rllib.utils.exploration.gaussian_noise.GaussianNoise'>"
+  },
+  "framework": "torch",
+  "l2_reg": 0.000743340446634739,
+  "normalize_actions": false,
+  "num_gpus": 0,
+  "num_workers": 2,
+  "policy_delay": 1,
+  "replay_buffer_config": {
+    "capacity": 50433,
+    "prioritized_replay_alpha": 0.4642422889773992,
+    "prioritized_replay_beta": 0.4237843845705956
+  },
+  "seed": 43,
+  "smooth_target_policy": true,
+  "target_network_update_freq": 2,
+  "target_noise": 0.08217987949477068,
+  "target_noise_clip": 0.3573921885030278,
+  "tau": 0.0031909192085114455,
+  "train_batch_size": 384,
+  "twin_q": true
+}

@@ -1,0 +1,67 @@
+{
+  "callbacks": "<class 'src.envs.custom_metrics_callback.CustomMetricsCallback'>",
+  "double_q": true,
+  "dueling": true,
+  "env": "warehouse-p_discretization",
+  "env_config": {
+    "ACTION_RANGE": 220,
+    "DT": 1.0,
+    "LEVELS": {
+      "1": {
+        "AGENT": {
+          "angle": 90.0,
+          "radius": 0.4,
+          "step_size": 1.0,
+          "x": 1.0,
+          "y": 1.0
+        },
+        "GOAL": {
+          "radius": 0.5,
+          "x": 12.0,
+          "y": 12.0
+        },
+        "HEIGHT": 15.0,
+        "OBSTACLES": {},
+        "WIDTH": 15.0
+      }
+    },
+    "RANDOM_SEED": 43,
+    "REWARD": {
+      "COLLISION": -20.0,
+      "GOAL": 50.0,
+      "REWARD_COEFFICIENT": 5.0,
+      "TIMESTEP_PENALTY_COEFFICIENT": 0.05
+    },
+    "SAFETY_DISTANCE": 0.05,
+    "STEPS_PER_EPISODE": 40
+  },
+  "env_task_fn": "<function curriculum_fn at 0x7f29b4c7b160>",
+  "exploration_config": {
+    "epsilon_timesteps": 40000,
+    "final_epsilon": 0.0060403738274216814,
+    "initial_epsilon": 0.43469690691641283,
+    "type": "<class 'src.algorithms.exploration.exploration.DynamicIntervalEpsilonGreedy'>"
+  },
+  "framework": "torch",
+  "lr": 0.011,
+  "n_step": 1,
+  "noisy": false,
+  "normalize_actions": false,
+  "num_gpus": 0,
+  "num_workers": 2,
+  "p_hiddens": [
+    256
+  ],
+  "p_lr": 0.0008072393989640188,
+  "q_hiddens": [
+    256
+  ],
+  "q_lr": 0.0009460124152963434,
+  "replay_buffer_config": {
+    "capacity": 2398,
+    "prioritized_replay_alpha": 0.5264928266492329,
+    "prioritized_replay_beta": 0.3638330255688689
+  },
+  "seed": 43,
+  "train_batch_size": 237
+}
