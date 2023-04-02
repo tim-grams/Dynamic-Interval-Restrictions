@@ -3,8 +3,8 @@
     <h2 align="center">Dynamic interval restrictions on action spaces<br>in deep reinforcement learning for obstacle avoidance</h2>
 
     <div align="center">
-        <img src="https://img.shields.io/github/repo-size/timg339/Dynamic-Interval-Restrictions" />
-        <a href="https://youtube.com/"><img src="https://img.shields.io/youtube/channel/views/UCcdVlXWTKPiX43u1vrNx5gQ?style=social"></a>
+        <img src="https://img.shields.io/github/repo-size/timg339/master_thesis" />
+        <a href="https://www.youtube.com/@dynamicintervalrestrictions/playlists"><img src="https://img.shields.io/youtube/channel/views/UCcdVlXWTKPiX43u1vrNx5gQ?style=social"></a>
     </div>
 
     <div align="center">
@@ -42,8 +42,8 @@ Adhere to the following steps:
 
 .. code-block::
 
-    $  git clone https://github.com/timg339/Dynamic-Interval-Restrictions.git
-    $  cd Dynamic-Interval-Restrictions
+    $  git clone https://github.com/timg339/master_thesis.git
+    $  cd master_thesis
 
 2. Install the dependencies
 
