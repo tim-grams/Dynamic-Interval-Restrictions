@@ -11,7 +11,7 @@
         <img src="https://i.ibb.co/1qW6R2X/environment-overview.png" />
     </div>
 
-    <p align="center">A full documentation can be found <a href="https://dynamic-interval-restrictions.readthedocs.io/">here</a>.</p>
+    <p align="center">A full documentation can be found <a href="https://action-space-thesis.readthedocs.io/">here</a>.</p>
     <p align="center">Videos of the evaluation rollouts are uploaded to <a href="https://www.youtube.com/@dynamicintervalrestrictions/playlists">YouTube</a></p>
 
 Abstract
