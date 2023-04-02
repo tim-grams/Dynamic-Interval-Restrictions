@@ -1,0 +1,22 @@
+# Pycharm
+.idea
+__pycache__
+
+# VS Code
+.vscode/
+
+# Spyder
+.spyproject/
+
+# Mac OS-specific storage files
+.DS_Store
+
+# Notebook Data
+.ipynb_checkpoints
+
+results/experiment_1/complex_evaluation/videos
+results/experiment_1/simple_evaluation/videos
+results/experiment_1/training_evaluation/videos
+results/experiment_2/complex_evaluation/videos
+results/experiment_2/simple_evaluation/videos
+results/experiment_2/training_evaluation/videos
