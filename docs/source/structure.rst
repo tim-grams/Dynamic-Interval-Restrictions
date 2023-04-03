@@ -13,7 +13,7 @@ The code in this GitHub repository is structured as follows:
     Environment wrapper classes for continuous masking, random replacement, projection, discretization, and parameterized discretization.
 
 :src/utils:
-    Utility functions, for example to load an agent.
+    Utility functions. For example, to load an agent.
 
 :src/evaluation:
     Evaluation and visualization functionality.
