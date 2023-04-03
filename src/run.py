@@ -162,8 +162,8 @@ def train_agent(algorithm,
             search_alg = Repeater(searcher=search_alg, repeat=4)
         else:
             search_alg = BasicVariantGenerator()
-        async_hyperband = ASHAScheduler(metric='episode_reward_mean', mode='max', max_t=20000,
-                                        grace_period=10, reduction_factor=2)
+        async_hyperband = ASHAScheduler(metric='episode_reward_mean', mode='max', max_t=200000,
+                                        grace_period=20, reduction_factor=2)
         analysis = ray.tune.run(algorithm_class,
                                 name=training_config['NAME'],
                                 config=run_config,
