@@ -22,13 +22,13 @@ from ray.rllib.utils.torch_utils import apply_grad_clipping, concat_multi_gpu_td
 from ray.rllib.utils.typing import AlgorithmConfigDict, TensorType, ModelGradients
 
 from src.algorithms.distributions.dynamic_interval import TorchDynamicIntervals
-from src.algorithms.models.pam_model import PAMModel
+from src.algorithms.models.parametric_masking_model import ParametricMaskingModel
 from src.algorithms.models.models import make_models
 
 torch, nn = try_import_torch()
 
 
-class PAMTorchPolicy(TargetNetworkMixin, ComputeTDErrorMixin, TorchPolicyV2, ABC):
+class ParametricMaskedDQNTorchPolicy(TargetNetworkMixin, ComputeTDErrorMixin, TorchPolicyV2, ABC):
 
     def __init__(
             self,
@@ -75,7 +75,7 @@ class PAMTorchPolicy(TargetNetworkMixin, ComputeTDErrorMixin, TorchPolicyV2, ABC
     def make_model_and_action_dist(
             self,
     ) -> Tuple[ModelV2, Type[TorchDistributionWrapper]]:
-        model = make_models(self, PAMModel)
+        model = make_models(self, ParametricMaskingModel)
         return model, TorchDynamicIntervals
 
     @override(TorchPolicyV2)
@@ -318,7 +318,7 @@ class PAMTorchPolicy(TargetNetworkMixin, ComputeTDErrorMixin, TorchPolicyV2, ABC
         return convert_to_numpy(stats)
 
 
-class PAMConfig(DQNConfig):
+class ParametricMaskedDQNConfig(DQNConfig):
 
     def __init__(self, algo_class=None):
         super().__init__(algo_class=algo_class or DQN)
@@ -328,19 +328,19 @@ class PAMConfig(DQNConfig):
         self.p_lr = 5e-4
 
 
-class PAM(DQN, ABC):
+class ParametricMaskedDQN(DQN, ABC):
 
     @classmethod
     @override(DQN)
     def get_default_config(cls):
-        return PAMConfig()
+        return ParametricMaskedDQNConfig()
 
     @classmethod
     @override(DQN)
     def get_default_policy_class(
             cls, config: AlgorithmConfigDict
-    ) -> Type[PAMTorchPolicy]:
+    ) -> Type[ParametricMaskedDQNTorchPolicy]:
         if config["framework"] == "torch":
-            return PAMTorchPolicy
+            return ParametricMaskedDQNTorchPolicy
         else:
             raise NotImplementedError('Tensorflow is not supported yet.')

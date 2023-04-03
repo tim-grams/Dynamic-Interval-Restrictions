@@ -18,13 +18,13 @@ from ray.rllib.utils.torch_utils import (
 from ray.rllib.utils.typing import AlgorithmConfigDict, TensorType
 
 from src.algorithms.distributions.dynamic_interval import TorchDynamicIntervals
-from src.algorithms.models.mps_td3_model import MPSTD3Model
+from src.algorithms.models.independent_ddpg_model import IndependentDDPGModel
 from src.algorithms.models.models import make_models, interval
 
 torch, nn = try_import_torch()
 
 
-class MPSTD3Policy(DDPGTorchPolicy, ABC):
+class IndependentDDPGPolicy(DDPGTorchPolicy, ABC):
 
     def __init__(
             self,
@@ -49,7 +49,7 @@ class MPSTD3Policy(DDPGTorchPolicy, ABC):
     def make_model_and_action_dist(
             self,
     ) -> Tuple[ModelV2, Type[TorchDistributionWrapper]]:
-        model = make_models(self, MPSTD3Model)
+        model = make_models(self, IndependentDDPGModel)
         return model, TorchDynamicIntervals
 
     @override(DDPGTorchPolicy)
@@ -224,12 +224,12 @@ class MPSTD3Policy(DDPGTorchPolicy, ABC):
         return [actor_loss, critic_loss]
 
 
-class MPSTD3(DDPG, ABC):
+class IndependentDDPG(DDPG, ABC):
 
     @override(DDPG)
     def get_default_policy_class(self, config: AlgorithmConfigDict) -> Type[Policy]:
         if config["framework"] == "torch":
 
-            return MPSTD3Policy
+            return IndependentDDPGPolicy
         else:
             raise NotImplementedError('Tensorflow is not supported yet.')

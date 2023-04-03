@@ -15,7 +15,7 @@ from src.algorithms.models.models import BatchScaling
 torch, nn = try_import_torch()
 
 
-class PAMModel(DQNTorchModel, ABC):
+class ParametricMaskingModel(DQNTorchModel, ABC):
 
     def __init__(self,
                  obs_space: gym.spaces.Space,

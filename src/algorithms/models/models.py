@@ -60,12 +60,12 @@ def make_models(policy: Policy, template) -> ModelV2:
     Returns:
         model
     """
-    from src.algorithms.models.pam_model import PAMModel
+    from src.algorithms.models.parametric_masking_model import ParametricMaskingModel
 
     if policy.config["use_state_preprocessor"]:
         raise NotImplementedError('Preprocessor with this model is not supported yet.')
 
-    if template is PAMModel:
+    if template is ParametricMaskingModel:
         num_outputs = int(np.product(policy.observation_space.shape))
         internal_action_space = policy.action_space
         num_outputs_parameter_module = int(np.product(policy.internal_observation_space.shape))
@@ -81,7 +81,7 @@ def make_models(policy: Policy, template) -> ModelV2:
 
     config = {
         'obs_space': policy.observation_space,
-        'action_space': policy.internal_action_space if template is PAMModel else policy.action_space,
+        'action_space': policy.internal_action_space if template is ParametricMaskingModel else policy.action_space,
         'num_outputs': num_outputs,
         'model_config': policy.config["model"],
         'framework': policy.config["framework"],

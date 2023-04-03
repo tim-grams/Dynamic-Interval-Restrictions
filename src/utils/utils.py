@@ -31,7 +31,8 @@ SHAPE_COLLECTION = [
 
 
 def register_environments(bins: int):
-    """ Register the possible environments with Rllib
+    """ Register the possible environments with Rllib.
+        Warehouse is in to support the old naming of the obstacle avoidance task
 
     Args:
         bins (int): Number of discretized actions or bins
@@ -50,31 +51,39 @@ def register_environments(bins: int):
     register_env('fuel_saving', lambda conf: APITranslationWrapper(FuelSaving(conf)))
     register_env('oil_extraction', lambda conf: APITranslationWrapper(OilField(conf)))
     register_env('obstacle_avoidance', lambda conf: APITranslationWrapper(ObstacleAvoidance(conf)))
+    register_env('warehouse', lambda conf: APITranslationWrapper(ObstacleAvoidance(conf)))
 
     register_env('fuel_saving-masking', lambda conf: ContinuousMaskingWrapper(FuelSaving(conf)))
     register_env('oil_extraction-masking', lambda conf: ContinuousMaskingWrapper(OilField(conf)))
     register_env('obstacle_avoidance-masking', lambda conf: ContinuousMaskingWrapper(ObstacleAvoidance(conf)))
+    register_env('warehouse-masking', lambda conf: ContinuousMaskingWrapper(ObstacleAvoidance(conf)))
 
     register_env('fuel-saving-discretization', lambda conf: DiscretizationWrapper(FuelSaving(conf), bins))
     register_env('oil_extraction-discretization', lambda conf: DiscretizationWrapper(OilField(conf), bins))
     register_env('obstacle_avoidance-discretization', lambda conf: DiscretizationWrapper(ObstacleAvoidance(conf), bins))
+    register_env('warehouse-discretization', lambda conf: DiscretizationWrapper(ObstacleAvoidance(conf), bins))
 
     register_env('fuel-saving-p_discretization', lambda conf: ParametrizedDiscretizationWrapper(FuelSaving(conf), bins))
     register_env('oil_extraction-p_discretization', lambda conf: ParametrizedDiscretizationWrapper(OilField(conf), bins))
     register_env('obstacle_avoidance-p_discretization', lambda conf: ParametrizedDiscretizationWrapper(
         ObstacleAvoidance(conf), bins))
+    register_env('warehouse-p_discretization', lambda conf: ParametrizedDiscretizationWrapper(
+        ObstacleAvoidance(conf), bins))
 
     register_env('fuel-saving-euclidean', lambda conf: EuclideanProjectionWrapper(FuelSaving(conf)))
     register_env('oil_extraction-euclidean', lambda conf: EuclideanProjectionWrapper(OilField(conf)))
     register_env('obstacle_avoidance-euclidean', lambda conf: EuclideanProjectionWrapper(ObstacleAvoidance(conf)))
+    register_env('warehouse-euclidean', lambda conf: EuclideanProjectionWrapper(ObstacleAvoidance(conf)))
 
     register_env('fuel-saving-random', lambda conf: RandomReplacementWrapper(FuelSaving(conf)))
     register_env('oil_extraction-random', lambda conf: RandomReplacementWrapper(OilField(conf)))
     register_env('obstacle_avoidance-random', lambda conf: RandomReplacementWrapper(ObstacleAvoidance(conf)))
+    register_env('warehouse-random', lambda conf: RandomReplacementWrapper(ObstacleAvoidance(conf)))
 
     register_env('fuel-saving-hierarchical', lambda conf: HierarchicalWrapper(FuelSaving(conf)))
     register_env('oil_extraction-hierarchical', lambda conf: HierarchicalWrapper(OilField(conf)))
     register_env('obstacle_avoidance-hierarchical', lambda conf: HierarchicalWrapper(ObstacleAvoidance(conf)))
+    register_env('warehouse-hierarchical', lambda conf: HierarchicalWrapper(ObstacleAvoidance(conf)))
 
 
 def get_algorithm(algorithm: str):
@@ -89,19 +98,19 @@ def get_algorithm(algorithm: str):
     if algorithm in ALGORITHMS:
         return get_trainable_cls(algorithm)
 
-    from src.algorithms.mps_td3 import MPSTD3
+    from src.algorithms.independent_ddpg import IndependentDDPG
     from src.algorithms.ddpg_action_replacement import ReplacementDDPG
     from src.algorithms.masked_dqn import MaskedDQN
-    from src.algorithms.pam import PAM
+    from src.algorithms.parametric_masked_dqn import ParametricMaskedDQN
 
-    if algorithm == 'MPS-TD3':
-        return MPSTD3
+    if algorithm in ['MPS-TD3', 'INDEPENDENT-DDPG']:
+        return IndependentDDPG
     if algorithm == 'DQN-MASKED':
         return MaskedDQN
     if algorithm == 'PPO-MASKED':
         return ray.rllib.algorithms.ppo.PPO
-    if algorithm == 'PAM':
-        return PAM
+    if algorithm in ['PAM', 'PARAMETRIC-MASKED']:
+        return ParametricMaskedDQN
     if algorithm == 'DDPG-REPLACEMENT':
         return ReplacementDDPG
 

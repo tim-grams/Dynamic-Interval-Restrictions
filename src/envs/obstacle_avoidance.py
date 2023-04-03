@@ -155,6 +155,7 @@ class ObstacleAvoidance(TaskSettableEnv, ABC):
     metadata = {
         'render_modes': ['human', 'rgb_array', 'jupyter'],
         'render_fps': 4,
+        'video.frames_per_second': 4
     }
 
     def __init__(self, env_config, render_mode: Optional[str] = None):
@@ -623,10 +624,11 @@ class ObstacleAvoidance(TaskSettableEnv, ABC):
 
         return [list(subset) for subset in allowed_action_space if subset[0] < subset[1]]
 
-    def render(self, draw_trajectory: bool = False, draw_information=True):
+    def render(self, render_mode: Optional[str] = 'rgb_array', draw_trajectory: bool = False, draw_information=True):
         """ Renders the environment
 
         Args:
+            render_mode (str)
             draw_trajectory (bool): Whether past steps should be indicated on the map
             draw_information (bool): Whether to show information about the reward, target distance, and allowed actions
         """
@@ -653,7 +655,7 @@ class ObstacleAvoidance(TaskSettableEnv, ABC):
             if self.render_mode == 'human':
                 pygame.display.init()
                 self.window = pygame.display.set_mode((window_width, window_height))
-                pygame.display.set_caption('Warehouse')
+                pygame.display.set_caption('Obstacle Avoidance')
             else:
                 self.window = pygame.Surface((window_width, window_height))
         if self.clock is None:

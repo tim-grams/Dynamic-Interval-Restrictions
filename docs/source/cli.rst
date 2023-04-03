@@ -35,6 +35,6 @@ Evaluation
     python3 cli.py evaluate
 
 For example, run the above command with the standard configuration to reproduce the results with the pretrained
-MPS-TD3 agent with complex restrictions (14 obstacles):
+MPS-TD3 agent and complex restrictions (14 obstacles):
 
 Afterward, you can load the step- and episode-results files in the evaluation notebook to visualize the outcomes.

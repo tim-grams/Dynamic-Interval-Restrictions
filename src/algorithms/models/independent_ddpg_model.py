@@ -13,7 +13,7 @@ from src.algorithms.models.models import BatchScaling
 torch, nn = try_import_torch()
 
 
-class MPSTD3Model(DDPGTorchModel, ABC):
+class IndependentDDPGModel(DDPGTorchModel, ABC):
 
     def __init__(
             self,

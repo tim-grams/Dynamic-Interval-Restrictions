@@ -17,7 +17,8 @@ from src.wrapper.random_replacement import RandomReplacementWrapper
 
 def evaluate(env_name: str, env_config, agent: Trainable, name: str, seeds: list, obstacles: list,
              results_path: str = None, episode_results_path: str = None,
-             spread: list = None, render: bool = True, record: str = None, alg_num: int = 0):
+             mean_size_sigma_obstacle: float = 1.0, sigma_size_obstacle: float = 0.25, range_size_obstacle: float = 0.5,
+             spread: list = None, uniform: bool = False, render: bool = False, record: str = None, alg_num: int = 0):
     """ Runs an agent without exploration in an evaluation environment
 
     Args:
@@ -29,7 +30,11 @@ def evaluate(env_name: str, env_config, agent: Trainable, name: str, seeds: list
         obstacles (list): Numbers of obstacles to put on the map
         results_path (str): Path to store the step results
         episode_results_path (str): Path to store the episode results
+        mean_size_sigma_obstacle (float): Mean obstacle size
+        sigma_size_obstacle (float): Standard deviation of the obstacle size
+        range_size_obstacle (float): Range to which the sampled obstacle size is clipped
         spread (list): Covariance matrix for the obstacle placements
+        uniform (bool): Set to True for uniform sampling. Otherwise, a normal distribution is used
         render (bool): Whether to visualize the evaluation runs
         record (str): Path to store videos of the evaluation runs. Do not save if None
         alg_num (int): Unique identifier for a training run in the evaluation
@@ -49,10 +54,10 @@ def evaluate(env_name: str, env_config, agent: Trainable, name: str, seeds: list
                                      env_config['LEVELS'][1]['WIDTH'],
                                      obstacle_count,
                                      spread,
-                                     mean_size_obstacle=1.0,
-                                     sigma_size_obstacle=0.25,
-                                     range_size_obstacle=0.5,
-                                     seed=seed, uniform=False,
+                                     mean_size_obstacle=mean_size_sigma_obstacle,
+                                     sigma_size_obstacle=sigma_size_obstacle,
+                                     range_size_obstacle=range_size_obstacle,
+                                     seed=seed, uniform=uniform,
                                      forbidden_circles=[[1.0, 1.0, 0.4], [12.0, 12.0, 0.5]]
                                      )
             }

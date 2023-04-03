@@ -220,13 +220,15 @@ def train_agent(algorithm,
 def test_agent():
     """ Test an agent
     """
-    experiments = pd.read_pickle(training_config['EXPERIMENTS_PATH'])
+    experiments = pd.read_pickle(evaluation_config['EXPERIMENTS_PATH'])
     experiments = experiments[experiments['algorithm_name'] == evaluation_config['ALGORITHM_NAME']]
 
     alg_num = 0
     for index, experiment in experiments.iterrows():
+        print(experiment['config'])
         config = load_pickle(experiment['config'])
         config['config']['num_gpus'] = 0
+        print(config)
         agent = load_agent(config, experiment['model'])
 
         evaluate(config['config']['env'],
@@ -236,7 +238,13 @@ def test_agent():
                  evaluation_config['SEEDS'],
                  evaluation_config['OBSTACLES'],
                  evaluation_config['EPISODE_RESULTS_PATH'],
-                 evaluation_config['STEP_DATA_PATH'], render=False, record=evaluation_config['RECORD'],
+                 evaluation_config['STEP_DATA_PATH'],
+                 mean_size_sigma_obstacle=evaluation_config['MEAN_SIZE_OBSTACLE'],
+                 sigma_size_obstacle=evaluation_config['SIGMA_SIZE_OBSTACLE'],
+                 range_size_obstacle=evaluation_config['RANGE_SIZE_OBSTACLE'],
+                 spread=evaluation_config['SPREAD'],
+                 uniform=evaluation_config['UNIFORM'],
+                 render=False, record=evaluation_config['RECORD'],
                  alg_num=alg_num)
         print(f' * Episode finished')
         alg_num += 1
