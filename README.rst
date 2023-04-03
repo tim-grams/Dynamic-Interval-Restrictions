@@ -18,20 +18,21 @@ Abstract
 ########
     Deep reinforcement learning algorithms typically act on the same set of actions.
     However, this is not sufficient for a wide range of real-world applications where
-    different subsets are available at each step. In this thesis, we consider the problem of
-    interval restrictions as they occur in obstacle avoidance. When actions that lead to
-    collisions are avoided, the action space is split into different parts. Recent research
-    is limited to mostly convex subsets and is not able to find an optimal policy over
-    varying disjoint ranges. Therefore, we propose two approaches, namely PAM and
-    MPS-TD3, that extend parameterized reinforcement learning and ConstraintNet
-    to handle an arbitrary number of intervals. We demonstrate their performance in
-    an obstacle avoidance task and compare the approaches to penalties, projection,
-    replacement, as well as discrete and continuous masking from the literature. The
-    results suggest that discrete masking of action values is the only effective method
-    when constraints did not emerge in training episodes. Contrarily, the decision
-    between MPS-TD3, projection, and masking seems to depend on the task at hand
-    when restrictions are learned. We compare the results with varying complexity
-    and give directions for future work.
+    different subsets are available at each step. In this thesis, we consider the problem
+    of interval restrictions as they occur in pathfinding with dynamic obstacles. When
+    actions that lead to collisions are avoided, the continuous action space is split into
+    variable parts. Recent research learns with strong assumptions on the number of
+    intervals, is limited to convex subsets, and the available actions are learned from
+    the observations. Therefore, we propose two approaches that are independent of
+    the state of the environment by extending parameterized reinforcement learning
+    and ConstraintNet to handle an arbitrary number of intervals. We demonstrate
+    their performance in an obstacle avoidance task and compare the methods to
+    penalties, projection, replacement, as well as discrete and continuous masking
+    from the literature. The results suggest that discrete masking of action-values
+    is the only effective method when constraints did not emerge during training.
+    When restrictions are learned, the decision between projection, masking, and our
+    ConstraintNet modification seems to depend on the task at hand. We compare the
+    results with varying complexity and give directions for future work.
 
 Quickstart
 ##########
